@@ -1,0 +1,31 @@
+{
+  "name": "@freezegold/anime.js",
+  "version": "0.0.1",
+  "description": "a anime search with kitsu api",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js",
+    "animeTest": "node ./test/animeSearch.test.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freezegr/anime.js.git"
+  },
+  "keywords": [
+    "anime",
+    "kitsu",
+    "search",
+    "node.js",
+    "anime.js"
+  ],
+  "author": "freezegr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freezegr/anime.js/issues"
+  },
+  "homepage": "https://github.com/freezegr/anime.js#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

@@ -1,0 +1,25 @@
+const fetch = require('node-fetch');
+const { Anime } = require('./src/animeSearchClass.js');
+const { version } = require('./package.json')
+const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (https://github.com/freezegr/anime.js)`
+
+const head = {
+	userAgent : userAgentTxt,
+	options : {
+	  headers: {
+		  'User-Agent': userAgentTxt,
+      Accept: 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json'
+    }
+  }
+}
+
+exports.searchAnime = function(search, offset = 0) {
+  return new Promise((resolve, reject) => {
+    const searchTerm = encodeURIComponent(search);
+    return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${offset}`, this._options)
+    .then(res => res.json())
+    .then(json => resolve(json.data.map(info => new Anime(info))))
+    .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
+  });
+}
