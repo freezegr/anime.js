@@ -32,13 +32,13 @@ anime.searchManga('attack on titan').then(res => {
 
 ## Docs
 
-#### kitsu.searchAnime(anime, page)
+#### anime.searchAnime(anime, page)
 | Parameter | Type          | Optional | Default | Description |
 |-----------|:-------------:|:--------:|:-------:|-------------|
 | anime     | string        |          | *none*  | The anime you want to search
 | page    | number        |    X     | 0       | page for pagination
 
-#### kitsu.searchManga(manga, offset)
+#### anime.searchManga(manga, page)
 | Parameter | Type          | Optional | Default | Description |
 |-----------|:-------------:|:--------:|:-------:|-------------|
 | manga     | string        |          | *none*  | The manga you want to search
