@@ -15,20 +15,20 @@ const head = {
   }
 }
 
-exports.searchAnime = function(search, offset = 0) {
+exports.searchAnime = function(search, page = 0) {
   return new Promise((resolve, reject) => {
     const searchTerm = encodeURIComponent(search);
-    return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${offset}`, head)
+    return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
     .then(res => res.json())
     .then(json => resolve(json.data.map(info => new Anime(info))))
     .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
   });
 }
 
-exports.searchManga = function(search, offset = 0) {
+exports.searchManga = function(search, page = 0) {
 		return new Promise((resolve, reject) => {
 			const searchTerm = encodeURIComponent(search);
-			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${offset}`, head)
+			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
 				.then(res => res.json())
 				.then(json => resolve(json.data.map(info => new Manga(info))))
 				.catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
