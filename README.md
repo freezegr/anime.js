@@ -14,7 +14,7 @@
 
 ## Instaletion 
 
-`npm i @freezegole/instagram.js --save`
+`npm i @freezegole/anime.js --save`
 
 ## example
 
