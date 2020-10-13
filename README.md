@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to anime.js </h1>
+<h1 align="center">Welcome to anime.js 👋</h1>
 <p align="center">
   <img src="https://img.shields.io/npm/v/@freezegold/anime.js?orange=blue" />
   <a href="https://www.npmjs.com/package/@freezegold/anime.js">
