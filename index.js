@@ -63,14 +63,3 @@ exports.searchHonorifics = function(honori){
   } 
 	return new Promise(tpt)
 }
-/*
-if(first(honori).length == 0){
-        if(second(honori) == true){
-          resolve('yep')
-        } else {
-          resolve('nop')
-        }
-      }else {
-        resolve(honorifics.filter(x=>x.hono == honori))
-      }
-*/
