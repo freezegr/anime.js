@@ -8,6 +8,8 @@
     "anime": "node ./test/animeSearch.test.js",
     "manga": "node ./test/mangaSearch.test.js",
     "modules": "node ./test/index.test.js",
+    "db": "node ./test/db.test.js",
+    "honorifics": "node ./test/honorifics.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

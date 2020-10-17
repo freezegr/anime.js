@@ -23,10 +23,14 @@ const anime = require('@freezegold/anime.js');
 
 anime.searchAnime('attack on titan').then(res => {
 	console.log(res);
-})
+});
 
 anime.searchManga('attack on titan').then(res => {
 	console.log(res);
+});
+
+anime.searchHonorifics('san').then(res => {
+	console.log(res)
 })
 ```
 
@@ -43,3 +47,8 @@ anime.searchManga('attack on titan').then(res => {
 |-----------|:-------------:|:--------:|:-------:|-------------|
 | manga     | string        |          | *none*  | The manga you want to search
 | page    | number        |    X     | 0       | page for pagination
+
+#### anime.searchHonorifics(honorific)
+| Parameter | Type          | Optional | Default | Description |
+|-----------|:-------------:|:--------:|:-------:|-------------|
+| honorifics     | string        |          | *none*  | The honorific you want to search
