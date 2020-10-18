@@ -3,6 +3,7 @@ const { Anime } = require('./src/animeSearchClass.js');
 const { version } = require('./package.json');
 const { Manga } = require('./src/manga.js');
 const { honorifics } = require('./src/db.js');
+const { honoFunction } = require('./src/util.js')
 const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (https://github.com/freezegr/anime.js)`
 
 const head = {
@@ -36,30 +37,11 @@ exports.searchManga = function(search, page = 0) {
   });
 };
 
-exports.searchHonorifics = function(honori){
-	function first(txt){
-		return honorifics.filter(x=>x.hono == txt)
-	}
-  function second(txt){
-    const alies = honorifics.map(x=>x.aliases)
-    const to = alies.map(word => word.includes(txt))
-    return to.includes(true)
-  }
-  function tpt(resolve, reject){
-    if(first(honori).length == 0){
-      if(second(honori) == true){
-        var al = honorifics.map(x=>x.aliases)
-        for(let i = 0; i < al.length; i++){
-          if(true == al[i].includes(honori)){
-            resolve(honorifics.filter(x=>x.aliases == al[i])[0])
-          } 
-        }
-      } else {
-        reject('Not found')
-      }
-    }else {
-      resolve(honorifics.filter(x=>x.hono == honori)[0])
-    }
-  } 
-	return new Promise(tpt)
+exports.nameHonorific = module.exports.nameHonorifics = function(name, hono = "san"){
+  return honoFunction(hono).then(res => {
+    return `${name}-${res.hono}`
+  })
 }
+
+exports.searchHonorifics = honoFunction; 
+exports.honorifics = honorifics;

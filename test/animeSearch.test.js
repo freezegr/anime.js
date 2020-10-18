@@ -1,5 +1,5 @@
 const anime = require("../index.js");
 
-anime.searchAnime('AnTsmsTmsmsksk').then(res => {
+anime.searchAnime('attack on titan').then(res => {
 	console.log(res)
 })

@@ -31,7 +31,11 @@ anime.searchManga('attack on titan').then(res => {
 
 anime.searchHonorifics('san').then(res => {
 	console.log(res)
-})
+});
+
+anime.nameHonorifics(freezegr,  "san").then(res => {
+	console.log(res)
+});
 ```
 
 ## Docs
@@ -52,3 +56,9 @@ anime.searchHonorifics('san').then(res => {
 | Parameter | Type          | Optional | Default | Description |
 |-----------|:-------------:|:--------:|:-------:|-------------|
 | honorifics     | string        |          | *none*  | The honorific you want to search
+
+#### anime.nameHonorifics(name,  honorific)
+| Parameter | Type          | Optional | Default | Description |
+|-----------|:-------------:|:--------:|:-------:|-------------|
+| name     | string        |          | *none*  | the name you want to use
+| honorific    | string        |          | -san     | the honorific you want to use

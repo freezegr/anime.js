@@ -25,6 +25,7 @@ class Anime {
 		this.episodeLength = data.attributes.episodeLength;
 		this.showType = data.attributes.showType;
 		this.nsfw = data.attributes.nsfw;
+		this.youtubeVideoId = `https://www.youtube.com/watch?v=${data.attributes.youtubeVideoId}`;
 	}
 }
 
