@@ -36,6 +36,9 @@ anime.searchHonorifics('san').then(res => {
 anime.nameHonorifics(freezegr,  "san").then(res => {
 	console.log(res)
 });
+
+console.log(anime.honorifics)
+
 ```
 
 ## Docs
