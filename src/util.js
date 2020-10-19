@@ -36,7 +36,7 @@ module.exports.meme = function(){
     "animememes",
     "AnimeFunny"
  ]  
-  var subreddit = memesPar[Math.floor(Math.random() * memesPar.length)];.log(subreddit)
+  var subreddit = memesPar[Math.floor(Math.random() * memesPar.length)];
   
   function prom(resolve, reject){
     try {
