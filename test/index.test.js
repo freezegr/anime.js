@@ -1,3 +1,5 @@
 const anime = require('../index.js')
 
-console.log(anime)
+anime.meme().then(res=>{
+	console.log(res)
+})

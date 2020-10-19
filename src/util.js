@@ -1,4 +1,5 @@
 const { honorifics } = require('./db.js');
+const puppy = require('random-puppy');
 
 module.exports.honoFunction = function(honori){
 	function first(txt){
@@ -26,4 +27,27 @@ module.exports.honoFunction = function(honori){
     }
   } 
 	return new Promise(tpt)
+}
+
+module.exports.meme = function(){
+  var memesPar = [
+    "animemes",
+    "MemesOfAnime",
+    "animememes",
+    "AnimeFunny"
+ ]  
+  var subreddit = memesPar[Math.floor(Math.random() * memesPar.length)];
+  console.log(subreddit)
+  
+  function prom(resolve, reject){
+    try {
+      puppy(subreddit).then(url => {
+      	console.log(url)
+        resolve(url)
+      })
+    }catch(err){
+      reject(new Error(`Couldn't fetch the api: ${err}`))
+    }
+  }
+  return new Promise(prom)
 }

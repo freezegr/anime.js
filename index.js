@@ -3,7 +3,8 @@ const { Anime } = require('./src/animeSearchClass.js');
 const { version } = require('./package.json');
 const { Manga } = require('./src/manga.js');
 const { honorifics } = require('./src/db.js');
-const { honoFunction } = require('./src/util.js')
+const { honoFunction, meme } = require('./src/util.js');
+const puppy = require('random-puppy');
 const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (https://github.com/freezegr/anime.js)`
 
 const head = {
@@ -37,11 +38,12 @@ exports.searchManga = function(search, page = 0) {
   });
 };
 
-exports.nameHonorific = module.exports.nameHonorifics = function(name, hono = "san"){
+exports.nameHonorific = function(name, hono = "san"){
   return honoFunction(hono).then(res => {
     return `${name}-${res.hono}`
   })
 }
 
+exports.meme = meme;
 exports.searchHonorifics = honoFunction; 
 exports.honorifics = honorifics;

@@ -37,6 +37,10 @@ anime.nameHonorifics(freezegr,  "san").then(res => {
 	console.log(res)
 });
 
+anime.meme().then(res => {
+	console.log(res)
+});
+
 console.log(anime.honorifics)
 
 ```
