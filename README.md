@@ -16,8 +16,6 @@
 
 `npm i @freezegole/anime.js --save`
 
-## read me  update coming soon!
-
 ## example
 
 ```js
@@ -47,28 +45,3 @@ anime.meme().then(res => {
 console.log(anime.honorifics)
 
 ```
-
-## Docs
-
-#### anime.searchAnime(anime, page)
-| Parameter | Type          | Optional | Default | Description |
-|-----------|:-------------:|:--------:|:-------:|-------------|
-| anime     | string        |          | *none*  | The anime you want to search
-| page    | number        |    X     | 0       | page for pagination
-
-#### anime.searchManga(manga, page)
-| Parameter | Type          | Optional | Default | Description |
-|-----------|:-------------:|:--------:|:-------:|-------------|
-| manga     | string        |          | *none*  | The manga you want to search
-| page    | number        |    X     | 0       | page for pagination
-
-#### anime.searchHonorifics(honorific)
-| Parameter | Type          | Optional | Default | Description |
-|-----------|:-------------:|:--------:|:-------:|-------------|
-| honorifics     | string        |          | *none*  | The honorific you want to search
-
-#### anime.nameHonorifics(name,  honorific)
-| Parameter | Type          | Optional | Default | Description |
-|-----------|:-------------:|:--------:|:-------:|-------------|
-| name     | string        |          | *none*  | the name you want to use
-| honorific    | string        |          | -san     | the honorific you want to use
