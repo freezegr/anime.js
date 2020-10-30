@@ -16,10 +16,13 @@
 
 `npm i @freezegole/anime.js --save`
 
+## read me  update coming soon!
+
 ## example
 
 ```js
-const anime = require('@freezegold/anime.js');
+const animeJs = require('@freezegold/anime.js');
+const anime = new animeJs.Client()
 
 anime.searchAnime('attack on titan').then(res => {
 	console.log(res);

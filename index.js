@@ -1,49 +1,55 @@
-const fetch = require('node-fetch');
-const { Anime } = require('./src/animeSearchClass.js');
-const { version } = require('./package.json');
-const { Manga } = require('./src/manga.js');
-const { honorifics } = require('./src/db.js');
-const { honoFunction, meme } = require('./src/util.js');
-const puppy = require('random-puppy');
-const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (https://github.com/freezegr/anime.js)`
+const util = require('./src/util.js');
 
-const head = {
-	userAgent : userAgentTxt,
-	options : {
-	  headers: {
-		  'User-Agent': userAgentTxt,
-      Accept: 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json'
-    }
+exports.Client = class {
+  constructor(){
+    this.searchAnime = util.searchAnime,
+    this.searchManga = util.searchManga,
+    this.searchHonorific = util.honoFunction,
+    this.nameHonorific = util.nameHonorific,
+    this.meme = util.meme,
+    //this.honorifics = util.honorifics,
+    this.nekoNsfw = {
+      anal: util.nekoNsfw('anal'),
+      avatar: util.nekoNsfw('avatar'),
+      bj: util.nekoNsfw('bJ'),
+      blowJob: util.nekoNsfw('blowJob'),
+      boobs: util.nekoNsfw('boobs'),
+      classic: util.nekoNsfw('classic'),
+      cumArts:  util.nekoNsfw('cumArts'),
+      cumsluts: util.nekoNsfw('cumsluts'),
+      ero: util.nekoNsfw('ero'),
+      eroFeet: util.nekoNsfw('eroFeet'),
+      eroKemonomimi: util.nekoNsfw('eroKemonomimi'),
+      eroKitsune: util.nekoNsfw('eroKitsune'),
+      eroNeko: util.nekoNsfw('eroNeko'),
+      eroYuri: util.nekoNsfw('eroYuri'),
+      feet: util.nekoNsfw('feet'),
+      feetGif: util.nekoNsfw('feetGif'),
+      femdom: util.nekoNsfw('femdom'),
+      futanari: util.nekoNsfw('futanari'),
+      gasm: util.nekoNsfw('gasm'),
+      girlSolo: util.nekoNsfw('girlSolo'),
+      girlSoloGif: util.nekoNsfw('girlSoloGif'),
+      hentai: util.nekoNsfw('hentai'),
+      holo: util.nekoNsfw('holo'),
+      holoEro: util.nekoNsfw('holoEro'),
+      kemonomimi: util.nekoNsfw('kemonomimi'),
+      keta: util.nekoNsfw('keta'),
+      kitsune: util.nekoNsfw('kitsune'),
+      kuni: util.nekoNsfw('kuni'),
+      lesbian: util.nekoNsfw('lesbian'),
+      neko: util.nekoNsfw('neko'),
+      nekoGif: util.nekoNsfw('nekoGif'),
+      pussy: util.nekoNsfw('pussy'),
+      pussyArt: util.nekoNsfw('pussyArt'),
+      pussyWankGif: util.nekoNsfw('pussyWankGif'),
+      randomHentaiGif: util.nekoNsfw('randomHentaiGif'),
+      spank: util.nekoNsfw('spank'),
+      tits: util.nekoNsfw('tits'),
+      trap: util.nekoNsfw('trap'),
+      yuri: util.nekoNsfw('yuri')
+    },
+    this.nekoWallpaper = util.nekoWallpaper
   }
 }
-
-exports.searchAnime = function(search, page = 0) {
-  return new Promise((resolve, reject) => {
-    const searchTerm = encodeURIComponent(search);
-    return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
-    .then(res => res.json())
-    .then(json => resolve(json.data.map(info => new Anime(info))))
-    .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
-  })
-};
-
-exports.searchManga = function(search, page = 0) {
-		return new Promise((resolve, reject) => {
-			const searchTerm = encodeURIComponent(search);
-			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
-				.then(res => res.json())
-				.then(json => resolve(json.data.map(info => new Manga(info))))
-				.catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
-  });
-};
-
-exports.nameHonorific = function(name, hono = "san"){
-  return honoFunction(hono).then(res => {
-    return `${name}-${res.hono}`
-  })
-}
-
-exports.meme = meme;
-exports.searchHonorifics = honoFunction; 
-exports.honorifics = honorifics;
+                

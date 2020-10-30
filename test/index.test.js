@@ -1,5 +1,5 @@
 const anime = require('../index.js')
+const an = new anime.Client()
+console.log(an)
 
-anime.meme().then(res=>{
-	console.log(res)
-})
+an.nekoNsfw.anal.then(res=>console.log(res.url))
