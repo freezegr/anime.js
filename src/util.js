@@ -114,6 +114,27 @@ module.exports.nekoNsfw = function(category){
   return new Promise(promis)
 }
 
+module.exports.nekoSfw = function(category){
+	if(!category) return new Error('No category')
+	function exacute(value){
+		//console.log(value)
+		return fetch(nekoURL+value)
+		  .then(result=> result.json())
+		  .then(res=> res)
+	}
+	async function promis(resolve, reject){
+    for(let i = 0; i < Object.keys(sfw[0]).length; i++){
+      if(Object.keys(sfw[0])[i] == category){
+      	resolve(await exacute(Object.values(sfw[0])[i]))
+      }else if(i == Object.keys(sfw[0]).length - 1){
+      	reject(`I can't find ${category}`)
+      } 
+    }
+	}
+  return new Promise(promis)
+}
+
+
 module.exports.nekoWallpaper = function(){
 	function promis(resolve, reject){
     try{

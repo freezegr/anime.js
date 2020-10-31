@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to anime.js 👋</h1>
+s<h1 align="center">Welcome to anime.js 👋</h1>
 <p align="center">
   <img src="https://img.shields.io/npm/v/@freezegold/anime.js?orange=blue" />
   <a href="https://www.npmjs.com/package/@freezegold/anime.js">
@@ -42,6 +42,18 @@ anime.meme().then(res => {
 	console.log(res)
 });
 
-console.log(anime.honorifics)
+anime.nsfw.anal.then(res=> {
+	console.log(res)
+})
 
+anime.sfw.kiss.then(res=> {
+	console.log(res)
+})
+
+// all nsfw and all sfw => console.log(anime.nfsw) / console.log(anime.sfw)
+
+anime.wallpaper.thne(res=>{
+	console.log(res)
+})
+console.log(anime.honorifics)
 ```

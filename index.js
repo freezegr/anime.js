@@ -2,13 +2,13 @@ const util = require('./src/util.js');
 
 exports.Client = class {
   constructor(){
+    this.honorifics = util.honorifics,
     this.searchAnime = util.searchAnime,
     this.searchManga = util.searchManga,
     this.searchHonorific = util.honoFunction,
     this.nameHonorific = util.nameHonorific,
     this.meme = util.meme,
-    //this.honorifics = util.honorifics,
-    this.nekoNsfw = {
+    this.nsfw = {
       anal: util.nekoNsfw('anal'),
       avatar: util.nekoNsfw('avatar'),
       bj: util.nekoNsfw('bJ'),
@@ -49,7 +49,37 @@ exports.Client = class {
       trap: util.nekoNsfw('trap'),
       yuri: util.nekoNsfw('yuri')
     },
+    this.sfw = {
+      avatar: util.nekoSfw('avatar'),
+      baka: util.nekoSfw('baka'),
+      Ball8: util.nekoSfw('Ball8'),
+      catText: util.nekoSfw('catText'),
+      cuddle: util.nekoSfw('cuddle'),
+      fact: util.nekoSfw('fact'),
+      feed: util.nekoSfw('feed'),
+      foxGirl: util.nekoSfw('foxGirl'),
+      gecg: util.nekoSfw('gecg'),
+      goose: util.nekoSfw('goose'),
+      holo: util.nekoSfw('holo'),
+      hug: util.nekoSfw('hug'),
+      kemonomimi: util.nekoSfw('kemonomimi'),
+      kiss: util.nekoSfw('kiss'),
+      lizard: util.nekoSfw('lizard'),
+      meow: util.nekoSfw('meow'),
+      neko: util.nekoSfw('neko'),
+      nekoGif: util.nekoSfw('nekoGif'),
+      OwOify: util.nekoSfw('OwOify'),
+      pat: util.nekoSfw('pat'),
+      poke: util.nekoSfw('poke'),
+      slap: util.nekoSfw('slap'),
+      smug: util.nekoSfw('smug'),
+      spoiler: util.nekoSfw('spoiler'),
+      tickle: util.nekoSfw('tickle'),
+      waifu: util.nekoSfw('waifu'),
+      why: util.nekoSfw('why'),
+      woof: util.nekoSfw('woof')
+    }
     this.nekoWallpaper = util.nekoWallpaper
   }
 }
-                
+        
