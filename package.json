@@ -1,6 +1,6 @@
 {
   "name": "@freezegold/anime.js",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "a anime search with kitsu api",
   "main": "index.js",
   "scripts": {
