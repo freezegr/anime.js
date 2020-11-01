@@ -5,11 +5,6 @@
   "main": "index.js",
   "scripts": {
     "run": "node index.js",
-    "anime": "node ./test/animeSearch.test.js",
-    "manga": "node ./test/mangaSearch.test.js",
-    "modules": "node ./test/index.test.js",
-    "db": "node ./test/db.test.js",
-    "honorifics": "node ./test/honorifics.js",
     "test": "node ./test/index.test.js"
   },
   "repository": {

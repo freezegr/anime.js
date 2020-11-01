@@ -4,7 +4,7 @@ const { version } = require('../package.json');
 const { Manga } = require('../src/manga.js');
 const { honorifics } = require('../src/db.js');
 const puppy = require('random-puppy');
-const { nsfw, sfw} = require('./snfw.js');
+const { nsfw, sfw, nsfwAZ, sfwAZ} = require('./snfw.js');
 const nekoURL = 'https://nekos.life/api/v2';
 const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (https://github.com/freezegr/anime.js)`
 const head = {
@@ -147,6 +147,8 @@ module.exports.nekoWallpaper = function(){
 	}
 	return new Promise(promis)
 }
- 
+
+module.exports.nsfwAll = nsfwAZ;
+module.exports.sfwAll = sfwAZ;
 module.exports.honorifics = honorifics;
 module.exports.honoFunction = honoFunction1;

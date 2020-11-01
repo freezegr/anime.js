@@ -42,15 +42,15 @@ anime.meme().then(res => {
 	console.log(res)
 });
 
-anime.nsfw.anal.then(res=> {
+anime.nsfw('anal').then(res=> {
 	console.log(res)
 })
 
-anime.sfw.kiss.then(res=> {
+anime.sfw('kiss').then(res=> {
 	console.log(res)
 })
 
-// all nsfw and all sfw => console.log(anime.nfsw) / console.log(anime.sfw)
+// all nsfw and all sfw => console.log(anime.nfswAll) / console.log(anime.sfwAll)
 
 anime.wallpaper.thne(res=>{
 	console.log(res)

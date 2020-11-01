@@ -74,9 +74,6 @@ module.exports.sfw = [
     waifu: "/img/waifu"
   }
 ]
-/* nfsw a-z
-anal avatar bJ blowJob boobs classic cumArts cumsluts ero eroFeet eroKemonomimi eroKitsune eroNeko eroYuri feet feetGif femdom futanari gasm girlSolo girlSoloGif hentai holo holoEro kemonomimi keta kitsune kuni lesbian neko nekoGif pussy pussyArt pussyWankGif randomHentaiGif spank tits trap yuri
-*/
-/* fsw a-z
-avatar baka Ball8 catText cuddle fact feed foxGirl gecg goose holo hug kemonomimi kiss lizard meow neko nekoGif OwOify pat poke slap smug spoiler tickle waifu wallpaper why woof
-*/
+module.exports.nsfwAZ = `anal avatar bJ blowJob boobs classic cumArts cumsluts ero eroFeet eroKemonomimi eroKitsune eroNeko eroYuri feet feetGif femdom futanari gasm girlSolo girlSoloGif hentai holo holoEro kemonomimi keta kitsune kuni lesbian neko nekoGif pussy pussyArt pussyWankGif randomHentaiGif spank tits trap yuri`
+
+module.exports.sfwAZ = `avatar baka Ball8 catText cuddle fact feed foxGirl gecg goose holo hug kemonomimi kiss lizard meow neko nekoGif OwOify pat poke slap smug spoiler tickle waifu wallpaper why woof`

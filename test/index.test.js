@@ -1,5 +1,7 @@
-const anime = require('../index.js')
-const an = new anime.Client()
-console.log(an)
+const animeJs = require('../index.js')
+const anime = new animeJs.Client()
+console.log(anime)
 
-an.sfw.woof.then(res=>console.log(res.url))
+anime.nsfw('eroFeet').then(res=>{
+  console.log(res.url)
+})
