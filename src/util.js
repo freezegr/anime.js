@@ -138,7 +138,7 @@ module.exports.nekoSfw = function(category){
 module.exports.nekoWallpaper = function(){
 	function promis(resolve, reject){
     try{
-		  fetch(nekoURL+endpoints.sfw[0].wallpaper)
+		  fetch(nekoURL+sfw[0].wallpaper)
 		    .then(result=>result.json())
 		    .then(res=>resolve(res))
 		}catch(err){

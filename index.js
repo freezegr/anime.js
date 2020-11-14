@@ -12,7 +12,7 @@ exports.Client = class {
     this.meme = util.meme,
     this.nsfw = util.nekoNsfw,
     this.sfw = util.nekoSfw,
-    this.nekoWallpaper = util.nekoWallpaper
+    this.wallpaper = util.nekoWallpaper
   }
 }
         
