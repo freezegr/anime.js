@@ -12,11 +12,11 @@
   </a>
 </p>
 
-## Install
+## Installation 
 
 `npm i @freezegole/anime.js --save`
 
-## example
+## Example
 
 ```js
 const animeJs = require('@freezegold/anime.js');
