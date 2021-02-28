@@ -1,6 +1,6 @@
 const animeJs = require('../index.js')
 const anime = new animeJs.Client()
 
-anime.wallpaper().then((res)=>{
+anime.searchAnime('aot').then((res)=>{
 	console.log(res)
 })

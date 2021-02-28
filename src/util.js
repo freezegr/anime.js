@@ -18,22 +18,54 @@ const head = {
   }
 }
 
-module.exports.searchAnime = function(search, page = 0) {
+module.exports.searchAnime = function(search, maxResult = "max") {
   return new Promise((resolve, reject) => {
+  	let page = 0;
     const searchTerm = encodeURIComponent(search);
     return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
     .then(res => res.json())
-    .then(json => resolve(json.data.map(info => new Anime(info))))
+    .then(json => {
+    	console.log()
+      function NotIwannis(data){
+			  if(maxResult > json.data.length) maxResult = json.data.length;
+			  if(maxResult == "max") maxResult = json.data.length;
+			  let roflis = []
+			    function paoulo(info){
+			  	 return new Anime(info) 
+			    }
+			  for(let i = 0; i < maxResult; i++){
+			   roflis.push(paoulo(json.data[i]))
+			  }
+			  return roflis
+			}
+     resolve(NotIwannis())
+    })
     .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
   })
 };
 
-module.exports.searchManga = function(search, page = 0) {
+module.exports.searchManga = function(search, maxResult = "max") {
 		return new Promise((resolve, reject) => {
 			const searchTerm = encodeURIComponent(search);
+			let page = 0;
 			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
 				.then(res => res.json())
-				.then(json => resolve(json.data.map(info => new Manga(info))))
+			  .then(json => {
+			  	//console.log(json.data.length)
+			  	function lel(data){
+			  	  if(maxResult > json.data.length) maxResult = json.data.length;
+			  	  if(maxResult == "max") maxResult = json.data.length;
+			  	  let flipblouk = []
+			  	  function gourgourizeiToKefaliMou(info){
+			  	   return new Manga(info) 
+			  	  }
+			  	  for(let i = 0; i < maxResult; i++){
+			  	  	flipblouk.push(gourgourizeiToKefaliMou(json.data[i]))
+			  	  }
+			  	  return flipblouk
+			  	}
+			  	resolve(lel())
+			  })
 				.catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
   });
 };
