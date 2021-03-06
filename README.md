@@ -26,6 +26,10 @@ anime.searchAnime('attack on titan', 1).then(res => { //1 = maxResult
 	console.log(res);
 });
 
+anime.getAnimeList('freezegr', 'watching').then(res => { //freezegr myanimelist account and watching is status
+	console.log(res)
+})
+
 anime.searchManga('attack on titan', "max").then(res => { //max = maxResult
 	console.log(res);
 });
