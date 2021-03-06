@@ -8,6 +8,7 @@ exports.Client = class {
     this.searchAnime = util.searchAnime,
     this.searchManga = util.searchManga,
     this.getAnimeList = util.getWatchList,
+    this.getMangaList = util.getMangaList,
     this.searchHonorific = util.honoFunction,
     this.nameHonorific = util.nameHonorific,
     this.meme = util.meme,

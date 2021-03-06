@@ -245,6 +245,71 @@ module.exports.getWatchList = function(name, status = 'all'){
 	return new Promise(exacute)
 }
 
+module.exports.getMangaList = function(name, status = 'all'){
+  function exacute(resolve, reject){
+    fetch(`http://myanimelist.net/mangalist/${name}/load.json`)
+      .then(ress => ress.json())
+      .then(res => {
+        let mangaStatus = {
+          profileName: name,
+          reading: [],
+          completed: [],
+          dropped: [],
+          planToRead: []
+        }
+        for(let i = 0; i < res.length; i++){
+        	switch(res[i].status) {
+        		case 1:
+        		  mangaStatus.reading.push(res[i].manga_title)
+        		break;
+        		case 2:
+        		  mangaStatus.completed.push(res[i].manga_title)
+        		break;
+        		case 4:
+        		  mangaStatus.dropped.push(res[i].manga_title)
+        		break;
+        		case 6:
+        		  mangaStatus.planToRead.push(res[i].manga_title)
+        		break;
+        	}
+        }
+      switch(status){
+      	case 'all':
+      	  resolve(mangaStatus)
+      	break;
+      	case 'watching':
+      	  resolve({
+      	  	profileName: name,
+      	  	watching: mangaStatus.watching
+      	  })
+      	break;
+      	case 'completed':
+      	  resolve({
+      	    profileName: name,
+      	    completed: mangaStatus.completed
+      	   })
+      	break;
+      	case 'dropped':
+      	resolve({
+      	  	profileName: name,
+      	  	dropped: mangaStatus.dropped
+      	  })
+      	break;
+      	case 'planToWatch':
+      	  resolve({
+      	  	profileName: name,
+      	  	planToRead: mangaStatus.planToRead
+      	  })
+      	break;
+      	default:
+      	  reject(`[anime.js]: I don't know this status "${status}"`)
+      	break;
+      } 
+    })
+	}
+	return new Promise(exacute)
+}
+
 module.exports.nsfwAll = nsfwAZ;
 module.exports.sfwAll = sfwAZ;
 module.exports.honorifics = honorifics;

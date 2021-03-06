@@ -1,5 +1,5 @@
 const animeJs = require('../index.js')
 const anime = new animeJs.Client()
-anime.getAnimeList('freezegr', 'watching').then(res => {
+anime.getMangaList('freezegr', 'all').then(res => {
 	console.log(res)
 })
