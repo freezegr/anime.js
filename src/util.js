@@ -376,11 +376,3 @@ module.exports.sfwAll = sfwAZ;
 module.exports.honorifics = honorifics;
 module.exports.honoFunction = honoFunction1;
 
-/*let lolota = $('li[class="clearfix mb12"]').html()
-		  	console.log(lolota)
-		  	let item = lolota.split('\n')
-		  	item.forEach((e) => {
-		  		if(e){
-		  			console.log(e.replace(/(\s+)/g, ''))
-		  		}
-		  	})*/
