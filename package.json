@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/freezegr/anime.js#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
     "node-fetch": "^2.6.1",
     "random-puppy": "^1.1.0"
   }

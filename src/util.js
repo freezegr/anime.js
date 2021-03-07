@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const cheerio = require('cheerio');
 const { Anime } = require('../src/animeSearchClass.js');
 const { version } = require('../package.json');
 const { Manga } = require('../src/manga.js');
@@ -179,8 +180,7 @@ module.exports.nekoWallpaper = function(){
 	}
 	return new Promise(promis)
 }
-
-module.exports.getWatchList = function(name, status = 'all'){
+const getAnimeList = function(name, status = 'all'){
   function exacute(resolve, reject){
     fetch(`http://myanimelist.net/animelist/${name}/load.json`)
       .then(ress => ress.json())
@@ -245,7 +245,9 @@ module.exports.getWatchList = function(name, status = 'all'){
 	return new Promise(exacute)
 }
 
-module.exports.getMangaList = function(name, status = 'all'){
+module.exports.getWatchList = getAnimeList
+
+const getMangaList = function (name, status = 'all'){
   function exacute(resolve, reject){
     fetch(`http://myanimelist.net/mangalist/${name}/load.json`)
       .then(ress => ress.json())
@@ -302,7 +304,7 @@ module.exports.getMangaList = function(name, status = 'all'){
       	  })
       	break;
       	default:
-      	  reject(`[anime.js]: I don't know this status "${status}"`)
+      	  resolve({err: 1})
       	break;
       } 
     })
@@ -310,7 +312,75 @@ module.exports.getMangaList = function(name, status = 'all'){
 	return new Promise(exacute)
 }
 
+module.exports.getMangaList = getMangaList
+
+module.exports.profile = ((name) => {
+	async function getInfo(resolve, reject){
+		let animeStatistic = await getAnimeList(name, 'all')
+	  let mangaStatistic = await getMangaList(name, 'all')
+		let profile = {
+			name: name,
+			stats: {
+				anime : {
+					watching: animeStatistic.watching.length,
+	  			completed: animeStatistic.completed.length,
+	  			dropped: animeStatistic.dropped.length,
+	  			planToWatch: animeStatistic.planToWatch.length 
+			  },
+			  manga: {
+			  	reading: mangaStatistic.reading.length,
+			  	completed: mangaStatistic.completed.length,
+			  	dropped: mangaStatistic.dropped.length,
+			  	planToRead: mangaStatistic.planToRead.length,
+			  	Episodes: null
+			  }
+			},
+			anime: {
+				watching: animeStatistic.watching,
+				completed: animeStatistic.completed,
+				dropped: animeStatistic.dropped,
+				planToWatch: animeStatistic.planToWatch
+			},
+			manga: {
+				reading: mangaStatistic.reading,
+				completed: mangaStatistic.completed,
+				dropped: mangaStatistic.dropped,
+				planToRead: mangaStatistic.planToRead
+			}
+		}
+		fetch('https://myanimelist.net/profile/'+name)
+		  .then(ress => ress.text())
+		  .then(res => {
+		  	var $ = cheerio.load(res); 
+		  	let lolota = $('li[class="clearfix mb12"]')
+		  	  .find('span')
+		  	  .toArray()
+		  	for(let i = 0; i < lolota.length; i++){
+		  		switch ($(lolota[i]).html()){
+		  			case 'Episodes':
+		  		    profile.stats.anime.Episodes = $(lolota[i+1]).html()
+		  		  break;
+		  		}
+		  	}
+		  	if(profile.stats.anime.Episodes ==  null && profile.stats.manga.reading == 0 && profile.stats.manga.reading == 0) resolve({error: 1, message: `I don\'t know any user with this name "${name}"`})
+		  	resolve(profile)
+		  })
+		  
+	}
+	return new Promise(getInfo)
+	
+})
+
 module.exports.nsfwAll = nsfwAZ;
 module.exports.sfwAll = sfwAZ;
 module.exports.honorifics = honorifics;
 module.exports.honoFunction = honoFunction1;
+
+/*let lolota = $('li[class="clearfix mb12"]').html()
+		  	console.log(lolota)
+		  	let item = lolota.split('\n')
+		  	item.forEach((e) => {
+		  		if(e){
+		  			console.log(e.replace(/(\s+)/g, ''))
+		  		}
+		  	})*/

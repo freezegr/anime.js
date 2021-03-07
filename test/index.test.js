@@ -1,5 +1,6 @@
 const animeJs = require('../index.js')
 const anime = new animeJs.Client()
-anime.getMangaList('freezegr', 'all').then(res => {
+anime.profile('freezegr').then(res => {
+	if(res.error) throw new Error('lel')
 	console.log(res)
 })

@@ -26,6 +26,11 @@ anime.searchAnime('attack on titan', 1).then(res => { //1 = maxResult
 	console.log(res);
 });
 
+anime.profile('freezegr').then(res => { //search myanimelist user
+	if(res.error) throw new Error('lel')
+	console.log(res)
+})
+
 anime.getAnimeList('freezegr', 'watching').then(res => { //freezegr myanimelist account and watching is status
 	console.log(res)
 })
