@@ -26,14 +26,14 @@ anime.searchAnime('attack on titan', 1).then(res => { //1 = maxResult
 	console.log(res);
 });
 
-anime.searchManga('attack on titan', "max").then(res => { //max = maxResult
+anime.searchManga('attack on titan', "max").then(res => { 
 	console.log(res);
 });
 
-anime.profile('freezegr').then(res => { //search myanimelist user
-	if(res.error) throw new Error('lel')
+anime.profile('freezegr', (res, err) => { //max = maxResult
+	if(err) throw new Error(err)
 	console.log(res)
-})
+});
 
 anime.getAnimeList('freezegr', 'watching').then(res => { //freezegr myanimelist account and watching is status
 	console.log(res)

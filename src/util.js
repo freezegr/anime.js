@@ -314,32 +314,37 @@ const getMangaList = function (name, status = 'all'){
 
 module.exports.getMangaList = getMangaList
 
-module.exports.profile = ((name) => {
+module.exports.profile = ((name, callback) => {
+	
 	async function getInfo(resolve, reject){
-		let animeStatistic = await getAnimeList(name, 'all')
-	  let mangaStatistic = await getMangaList(name, 'all')
+	let animeStatistic = await getAnimeList(name, 'all')
+	let mangaStatistic = await getMangaList(name, 'all')
 		let profile = {
 			name: name,
+			gender: null,
+			birthday: null,
+			last_online: null,
+			user_pfp: null,
 			stats: {
-				anime : {
-					watching: animeStatistic.watching.length,
+			  anime : {
+				watching: animeStatistic.watching.length,
 	  			completed: animeStatistic.completed.length,
 	  			dropped: animeStatistic.dropped.length,
-	  			planToWatch: animeStatistic.planToWatch.length 
+	  			planToWatch: animeStatistic.planToWatch.length,
+				episodes: null,
 			  },
 			  manga: {
 			  	reading: mangaStatistic.reading.length,
 			  	completed: mangaStatistic.completed.length,
 			  	dropped: mangaStatistic.dropped.length,
-			  	planToRead: mangaStatistic.planToRead.length,
-			  	Episodes: null
+			  	planToRead: mangaStatistic.planToRead.length
 			  }
 			},
 			anime: {
 				watching: animeStatistic.watching,
 				completed: animeStatistic.completed,
 				dropped: animeStatistic.dropped,
-				planToWatch: animeStatistic.planToWatch
+				planToWatch: animeStatistic.planToWatch 
 			},
 			manga: {
 				reading: mangaStatistic.reading,
@@ -348,6 +353,7 @@ module.exports.profile = ((name) => {
 				planToRead: mangaStatistic.planToRead
 			}
 		}
+		if(profile.stats.anime.watching == 0 && profile.stats.manga.reading == 0 && profile.stats.manga.reading == 0) return callback(null, `I don\'t know any user with this name "${name}"`)	
 		fetch('https://myanimelist.net/profile/'+name)
 		  .then(ress => ress.text())
 		  .then(res => {
@@ -358,16 +364,32 @@ module.exports.profile = ((name) => {
 		  	for(let i = 0; i < lolota.length; i++){
 		  		switch ($(lolota[i]).html()){
 		  			case 'Episodes':
-		  		    profile.stats.anime.Episodes = $(lolota[i+1]).html()
+		  		    profile.stats.anime.episodes = $(lolota[i+1]).html()
 		  		  break;
 		  		}
 		  	}
-		  	if(profile.stats.anime.Episodes ==  null && profile.stats.manga.reading == 0 && profile.stats.manga.reading == 0) resolve({error: 1, message: `I don\'t know any user with this name "${name}"`})
-		  	resolve(profile)
+		  	let cs = $('li[class="clearfix"]')
+		      .find('span')
+		  	  .toArray()
+			for(let i = 0; i < cs.length; i++){
+			  switch($(cs[i]).html()){
+			    case "Gender":
+				   profile.gender = $(cs[i+1]).html()
+				break;
+				case "Birthday":
+				  profile.birthday = $(cs[i+1]).html()
+				break;
+				case "Last Online":
+				  profile.last_online = $(cs[i+1]).html()
+				break;
+			  }
+			} 
+			let user_pfp = $('div[class="user-image mb8"]').find('img')[0].attribs
+			profile.user_pfp = Object.values(user_pfp)[1]
+		    callback(profile, null)
 		  })
-		  
 	}
-	return new Promise(getInfo)
+	getInfo()
 	
 })
 
