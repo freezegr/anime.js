@@ -369,7 +369,7 @@ module.exports.profile = ((name, callback) => {
 		  		}
 		  	}
 		  	let cs = $('li[class="clearfix"]')
-		          .find('span')
+		      .find('span')
 		  	  .toArray()
 			for(let i = 0; i < cs.length; i++){
 			  switch($(cs[i]).html()){
@@ -386,19 +386,21 @@ module.exports.profile = ((name, callback) => {
 			} 
 			let user_pfp = $('div[class="user-image mb8"]').find('img')[0].attribs
 			profile.user_pfp = Object.values(user_pfp)[1]
-                        fetch(`https://myanimelist.net/profile/${name}/friends`)
-	                 .then(ress => ress.text())
-                         .then(res => {
-		          let friendsList = []
-                          let _ = cheerio.load(res); 
-			  let larose = _('div[class="user-friends pt4 pb12"]')
-		            .find('a')
-		  	    .toArray()
-		          for(let i = 0; i < larose.length; i++){
+			fetch(`https://myanimelist.net/profile/${name}/friends`)
+	          .then(ress => ress.text())
+              .then(res => {
+		        let friendsList = []
+                let _ = cheerio.load(res); 
+				let larose = _('div[class="user-friends pt4 pb12"]')
+		          .find('a')
+		  	      .toArray()
+		      for(let i = 0; i < larose.length; i++){
 			    profile.friends.push(_(larose[i]).html())
-		          }  
+		      }  
 			  callback(profile, null);
 		    })
+			
+		    
 		  })
 	}
 	getInfo()
