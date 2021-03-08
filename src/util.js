@@ -26,7 +26,6 @@ module.exports.searchAnime = function(search, maxResult = "max") {
     return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
     .then(res => res.json())
     .then(json => {
-    	console.log()
       function NotIwannis(data){
 			  if(maxResult > json.data.length) maxResult = json.data.length;
 			  if(maxResult == "max") maxResult = json.data.length;
@@ -52,7 +51,6 @@ module.exports.searchManga = function(search, maxResult = "max") {
 			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
 				.then(res => res.json())
 			  .then(json => {
-			  	//console.log(json.data.length)
 			  	function lel(data){
 			  	  if(maxResult > json.data.length) maxResult = json.data.length;
 			  	  if(maxResult == "max") maxResult = json.data.length;
@@ -130,7 +128,6 @@ module.exports.meme = function(){
 module.exports.nekoNsfw = function(category){
 	if(!category) return new Error('No category')
 	function exacute(value){
-		//console.log(value)
 		return fetch(nekoURL+value)
 		  .then(result=> result.json())
 		  .then(res=> res)
@@ -325,6 +322,12 @@ module.exports.profile = ((name, callback) => {
 			last_online: null,
 			user_pfp: null,
 			friends: [],
+			favorite: {
+				anime: [],
+				manga: [],
+				character: [],
+				people: []
+			},
 			stats: {
 			  anime: {
 				watching: animeStatistic.watching.length,
@@ -385,6 +388,32 @@ module.exports.profile = ((name, callback) => {
 			  }
 			} 
 			let user_pfp = $('div[class="user-image mb8"]').find('img')[0].attribs
+			
+			let favoriteTag = $('ul[class="favorites-list anime"]')
+			  .find('div[class="di-tc va-t pl8 data"] > a')
+			  .toArray()
+			for(let i = 0; i < favoriteTag.length; i++){
+				profile.favorite.anime.push($(favoriteTag[i]).html().replace(/(\s+)/g, ''))
+			}
+			
+			let a_ghost = $('ul[class="favorites-list manga"]')
+			  .find('div[class="di-tc va-t pl8 data"] > a')
+			  .toArray()
+			for(let i = 0; i < a_ghost.length; i++){
+				profile.favorite.manga.push($(a_ghost[i]).html().replace(/(\s+)/g, ''))
+			}
+			let characterTag = $('ul[class="favorites-list characters"]')
+			  .find('div[class="di-tc va-t pl8 data"] > a')
+			  .toArray()
+			for(let i = 0; i < characterTag.length; i++){
+				profile.favorite.character.push($(characterTag[i]).html().replace(/(\s+)/g, ''))
+			}
+			let peopleTag = $('ul[class="favorites-list people"]')
+			  .find('div[class="di-tc va-t pl8 data"] > a')
+			  .toArray()
+			for(let i = 0; i < peopleTag.length; i++){
+				profile.favorite.people.push($(peopleTag[i]).html().replace(/(\s+)/g, ''))
+			}
 			profile.user_pfp = Object.values(user_pfp)[1]
 			fetch(`https://myanimelist.net/profile/${name}/friends`)
 	          .then(ress => ress.text())
