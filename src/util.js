@@ -315,21 +315,6 @@ const getMangaList = function (name, status = 'all'){
 module.exports.getMangaList = getMangaList
 
 module.exports.profile = ((name, callback) => {
-	/*function friend_list(){
-      fetch(`https://myanimelist.net/profile/${name}/friends`)
-	    .then(ress => ress.text())
-		.then(res => {
-		  let friendsList = []
-		  let $ = cheerio.load(res); 
-          let larose = $('div[class="user-friends pt4 pb12"]')
-		    .find('a')
-		  	.toArray()
-		  for(let i = 0; i < larose.length; i++){
-			friendsList.push($(larose[i]).html())
-		  }
-		  return friendsList;
-		})
-	};*/
 	async function getInfo(resolve, reject){
 	let animeStatistic = await getAnimeList(name, 'all')
 	let mangaStatistic = await getMangaList(name, 'all')
@@ -401,21 +386,19 @@ module.exports.profile = ((name, callback) => {
 			} 
 			let user_pfp = $('div[class="user-image mb8"]').find('img')[0].attribs
 			profile.user_pfp = Object.values(user_pfp)[1]
-            fetch(`https://myanimelist.net/profile/${name}/friends`)
-	          .then(ress => ress.text())
-              .then(res => {
+        fetch(`https://myanimelist.net/profile/${name}/friends`)
+	        .then(ress => ress.text())
+          .then(res => {
 		        let friendsList = []
-                let _ = cheerio.load(res); 
-				let larose = _('div[class="user-friends pt4 pb12"]')
+            let _ = cheerio.load(res); 
+				    let larose = _('div[class="user-friends pt4 pb12"]')
 		          .find('a')
 		  	      .toArray()
-		      for(let i = 0; i < larose.length; i++){
-			    profile.friends.push(_(larose[i]).html())
-		      }  
-			  callback(profile, null);
+		        for(let i = 0; i < larose.length; i++){
+			        profile.friends.push(_(larose[i]).html())
+		        }  
+			    callback(profile, null);
 		    })
-			
-		    
 		  })
 	}
 	getInfo()
