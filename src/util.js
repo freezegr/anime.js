@@ -315,7 +315,21 @@ const getMangaList = function (name, status = 'all'){
 module.exports.getMangaList = getMangaList
 
 module.exports.profile = ((name, callback) => {
-	
+	/*function friend_list(){
+      fetch(`https://myanimelist.net/profile/${name}/friends`)
+	    .then(ress => ress.text())
+		.then(res => {
+		  let friendsList = []
+		  let $ = cheerio.load(res); 
+          let larose = $('div[class="user-friends pt4 pb12"]')
+		    .find('a')
+		  	.toArray()
+		  for(let i = 0; i < larose.length; i++){
+			friendsList.push($(larose[i]).html())
+		  }
+		  return friendsList;
+		})
+	};*/
 	async function getInfo(resolve, reject){
 	let animeStatistic = await getAnimeList(name, 'all')
 	let mangaStatistic = await getMangaList(name, 'all')
@@ -325,8 +339,9 @@ module.exports.profile = ((name, callback) => {
 			birthday: null,
 			last_online: null,
 			user_pfp: null,
+			friends: [],
 			stats: {
-			  anime : {
+			  anime: {
 				watching: animeStatistic.watching.length,
 	  			completed: animeStatistic.completed.length,
 	  			dropped: animeStatistic.dropped.length,
@@ -357,7 +372,7 @@ module.exports.profile = ((name, callback) => {
 		fetch('https://myanimelist.net/profile/'+name)
 		  .then(ress => ress.text())
 		  .then(res => {
-		  	var $ = cheerio.load(res); 
+		  	let $ = cheerio.load(res); 
 		  	let lolota = $('li[class="clearfix mb12"]')
 		  	  .find('span')
 		  	  .toArray()
@@ -386,7 +401,21 @@ module.exports.profile = ((name, callback) => {
 			} 
 			let user_pfp = $('div[class="user-image mb8"]').find('img')[0].attribs
 			profile.user_pfp = Object.values(user_pfp)[1]
-		    callback(profile, null)
+			fetch(`https://myanimelist.net/profile/${name}/friends`)
+	         .then(ress => ress.text())
+		     .then(res => {
+		       let friendsList = []
+	           let _ = cheerio.load(res); 
+               let larose = _('div[class="user-friends pt4 pb12"]')
+		        .find('a')
+		  	    .toArray()
+		      for(let i = 0; i < larose.length; i++){
+			    profile.friends.push(_(larose[i]).html())
+		      }  
+			  callback(profile, null);
+		    })
+			
+		    
 		  })
 	}
 	getInfo()
