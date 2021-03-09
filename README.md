@@ -12,6 +12,8 @@
   </a>
 </p>
 
+---
+
 - [Installation](#Installation)
     - [Anime-Manga Search](#Anime-Manga-Search)
     - [MyAnimeList profile](#MyAnimeList-profile)
@@ -98,6 +100,7 @@ anime.wallpaper.thne(res=>{
 });
 
 ```
+---
 
 ## comming soon
 
