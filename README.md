@@ -13,9 +13,9 @@
 </p>
 
 - [Installation](#Installation)
-    - [Anime-Manga Search](#Anime-Manga%20Search)
-    - [MyAnimeList profile](#MyAnimeList%20profile)
-    - [Get my anime list](#Get%20my%20anime%20lis)
+    - [Anime-Manga Search](#Anime-Manga-Search)
+    - [MyAnimeList profile](#MyAnimeList-profile)
+    - [Get my anime list](#Get-my-anime-lis)
     - [Honorifics](#Honorifics)
     - [NSFW](#NSFW)
     - [SFW](#SFW)
