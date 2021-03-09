@@ -21,6 +21,7 @@
     - [Honorifics](#Honorifics)
     - [NSFW](#NSFW)
     - [SFW](#SFW)
+    - [Wallpaper-meme](#Wallpaper-meme)
 - [coming soon](#coming-soon)
   - [Seasonal Anime](#Seasonal-Anime)
 ## Installation 
