@@ -19,7 +19,8 @@
     - [Honorifics](#Honorifics)
     - [NSFW](#NSFW)
     - [SFW](#SFW)
-
+- [coming soon](#coming-soon)
+  - [Seasonal Anime](#Seasonal-Anime)
 ## Installation 
 
 `npm i @freezegole/anime.js --save`
@@ -96,4 +97,14 @@ anime.wallpaper.thne(res=>{
 	console.log(res)
 });
 
+```
+
+### comming soon
+
+## Seasonal Anime
+
+```js
+  anime.seasonal().then((res) => {
+    console.log(res)
+  });
 ```
