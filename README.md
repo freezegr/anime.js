@@ -12,6 +12,8 @@
   </a>
 </p>
 
+[Installation](#Installation)
+
 ## Installation 
 
 `npm i @freezegole/anime.js --save`
