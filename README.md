@@ -13,7 +13,7 @@
 </p>
 
 - [Installation](#Installation)
-    - [Anime-Manga Search](#Anime%20Manga%20Search)
+    - [Anime-Manga Search](#Anime-Manga%20Search)
     - [MyAnimeList profile](#MyAnimeList%20profile)
     - [Get my anime list](#Get%20my%20anime%20lis)
     - [Honorifics](#Honorifics)
