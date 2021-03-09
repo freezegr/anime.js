@@ -105,8 +105,8 @@ anime.wallpaper.thne(res=>{
 
 ## Seasonal Anime
 
-- comming soon -
 ```js
+  //comming soon
   anime.seasonal().then((res) => {
     console.log(res)
   });
