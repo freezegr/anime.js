@@ -7,8 +7,8 @@
   <a href="https://github.com/freezegr/insta.js/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
   </a>
-  <a href="https://github.com/freezegr/gitmoji-changelog">
-    <img src="https://img.shields.io/badge/changelog-gitmoji-brightgreen.svg" alt="gitmoji-changelog">
+  <a href="https://img.shields.io/static/v1?label=owner&message=freezegr&color=blue">
+    <img src="https://img.shields.io/static/v1?label=owner&message=freezegr&color=blue" alt="owner">
   </a>
 </p>
 
