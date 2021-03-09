@@ -101,12 +101,11 @@ anime.wallpaper.thne(res=>{
 });
 
 ```
----
 
-## - Domming Soon -
 
 ## Seasonal Anime
 
+- comming soon -
 ```js
   anime.seasonal().then((res) => {
     console.log(res)
