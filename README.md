@@ -12,13 +12,19 @@
   </a>
 </p>
 
-[Installation](#Installation)
+- [Installation](#Installation)
+    - [Anime-Manga Search](#Anime-Manga Search)
+    - [MyAnimeList profile](#MyAnimeList profile)
+    - [Get my anime list](#Get my anime lis)
+    - [Honorifics](#Honorifics)
+    - [NSFW](#NSFW)
+    - [SFW](#SFW)
 
 ## Installation 
 
 `npm i @freezegole/anime.js --save`
 
-## Example
+## Anime-Manga Search
 
 ```js
 const animeJs = require('@freezegold/anime.js');
@@ -31,16 +37,28 @@ anime.searchAnime('attack on titan', 1).then(res => { //1 = maxResult
 anime.searchManga('attack on titan', "max").then(res => { 
 	console.log(res);
 });
+```
 
+## MyAnimeList profile
+
+```js
 anime.profile('freezegr', (res, err) => { //max = maxResult
 	if(err) throw new Error(err)
 	console.log(res)
 });
+```
 
+## Get my anime list
+
+```js
 anime.getAnimeList('freezegr', 'watching').then(res => { //freezegr myanimelist account and watching is status
 	console.log(res)
 })
+```
 
+## Honorifics
+
+```js
 anime.searchHonorifics('san').then(res => {
 	console.log(res)
 });
@@ -48,23 +66,34 @@ anime.searchHonorifics('san').then(res => {
 anime.nameHonorifics(freezegr,  "san").then(res => {
 	console.log(res)
 });
+```
 
+## NSFW 
+
+```js
+anime.nsfw('anal').then(res=> {
+	console.log(res)
+});
+```
+
+## SFW 
+
+```js
+anime.sfw('kiss').then(res=> {
+	console.log(res)
+});
+//all nsfw and all sfw => console.log(anime.nfswAll) / console.log(anime.sfwAll)
+```
+
+## Wallpaper Meme 
+
+```ja
 anime.meme().then(res => {
 	console.log(res)
 });
 
-anime.nsfw('anal').then(res=> {
-	console.log(res)
-})
-
-anime.sfw('kiss').then(res=> {
-	console.log(res)
-})
-
-// all nsfw and all sfw => console.log(anime.nfswAll) / console.log(anime.sfwAll)
-
 anime.wallpaper.thne(res=>{
 	console.log(res)
-})
-console.log(anime.honorifics)
+});
+
 ```
