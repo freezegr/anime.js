@@ -102,7 +102,7 @@ anime.wallpaper.thne(res=>{
 ```
 ---
 
-## comming soon
+## - Domming Soon -
 
 ## Seasonal Anime
 
