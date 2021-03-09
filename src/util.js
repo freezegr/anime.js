@@ -147,7 +147,6 @@ module.exports.nekoNsfw = function(category){
 module.exports.nekoSfw = function(category){
 	if(!category) return new Error('No category')
 	function exacute(value){
-		//console.log(value)
 		return fetch(nekoURL+value)
 		  .then(result=> result.json())
 		  .then(res=> res)
@@ -340,7 +339,9 @@ module.exports.profile = ((name, callback) => {
 			  	reading: mangaStatistic.reading.length,
 			  	completed: mangaStatistic.completed.length,
 			  	dropped: mangaStatistic.dropped.length,
-			  	planToRead: mangaStatistic.planToRead.length
+			  	planToRead: mangaStatistic.planToRead.length,
+				chapters: 0,
+				volumes: 0
 			  }
 			},
 			anime: {
@@ -355,20 +356,29 @@ module.exports.profile = ((name, callback) => {
 				dropped: mangaStatistic.dropped,
 				planToRead: mangaStatistic.planToRead
 			}
-		}
-		if(profile.stats.anime.watching == 0 && profile.stats.manga.reading == 0 && profile.stats.manga.reading == 0) return callback(null, `I don\'t know any user with this name "${name}"`)	
+		} 	
 		fetch('https://myanimelist.net/profile/'+name)
 		  .then(ress => ress.text())
 		  .then(res => {
 		  	let $ = cheerio.load(res); 
+			let UserNotFound = $('h1[class="h1"]')
+			if(UserNotFound && $(UserNotFound).html() == "404 Not Found"){
+				return callback(null, `I don\'t know any user with this name "${name}"`)
+			}
 		  	let lolota = $('li[class="clearfix mb12"]')
 		  	  .find('span')
 		  	  .toArray()
 		  	for(let i = 0; i < lolota.length; i++){
 		  		switch ($(lolota[i]).html()){
-		  			case 'Episodes':
-		  		    profile.stats.anime.episodes = $(lolota[i+1]).html()
+		  		  case 'Episodes':
+		  		    profile.stats.anime.episodes = parseFloat($(lolota[i+1]).html().replace(/\,/g, ''))
 		  		  break;
+				  case 'Chapters':
+				    profile.stats.manga.chapters = parseFloat($(lolota[i+1]).html().replace(/\,/g, ''))
+				  break;
+				  case 'Volumes':
+				    profile.stats.manga.volumes = parseFloat($(lolota[i+1]).html().replace(/\,/g, ''))
+				  break;
 		  		}
 		  	}
 		  	let cs = $('li[class="clearfix"]')
