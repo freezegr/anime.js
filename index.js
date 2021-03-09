@@ -17,5 +17,4 @@ exports.Client = class {
     this.sfw = util.nekoSfw,
     this.wallpaper = util.nekoWallpaper
   }
-}
-        
+};

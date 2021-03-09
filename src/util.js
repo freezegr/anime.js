@@ -333,7 +333,7 @@ module.exports.profile = ((name, callback) => {
 	  			completed: animeStatistic.completed.length,
 	  			dropped: animeStatistic.dropped.length,
 	  			planToWatch: animeStatistic.planToWatch.length,
-				episodes: null,
+				episodes: 0,
 			  },
 			  manga: {
 			  	reading: mangaStatistic.reading.length,
@@ -444,7 +444,7 @@ module.exports.profile = ((name, callback) => {
 	}
 	getInfo()
 	
-})
+});
 
 module.exports.nsfwAll = nsfwAZ;
 module.exports.sfwAll = sfwAZ;
