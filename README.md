@@ -22,7 +22,7 @@
     - [NSFW](#NSFW)
     - [SFW](#SFW)
     - [Wallpaper-meme](#Wallpaper-meme)
-- [coming soon](#coming-soon)
+- [Coming soon](#Seasonal-Anime)
   - [Seasonal Anime](#Seasonal-Anime)
 - [Support](https://discord.gg/2eazDsQn)
 
