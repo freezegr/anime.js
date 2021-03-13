@@ -24,7 +24,8 @@
     - [Wallpaper-meme](#Wallpaper-meme)
 - [coming soon](#coming-soon)
   - [Seasonal Anime](#Seasonal-Anime)
-- [support](#https://discord.gg/2eazDsQn)
+- [support](https://discord.gg/2eazDsQn)
+
 ## Installation 
 
 `npm i @freezegole/anime.js --save`
