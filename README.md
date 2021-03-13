@@ -24,7 +24,7 @@
     - [Wallpaper-meme](#Wallpaper-meme)
 - [coming soon](#coming-soon)
   - [Seasonal Anime](#Seasonal-Anime)
-- [support](https://discord.gg/2eazDsQn)
+- [Support](https://discord.gg/2eazDsQn)
 
 ## Installation 
 
