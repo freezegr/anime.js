@@ -56,7 +56,7 @@ anime.profile('freezegr', (res, err) => { //max = maxResult
 
 ```js
 anime.getAnimeList('freezegr', 'watching').then(res => { //freezegr myanimelist account and watching is status
-	console.log(res)
+	console.log(res);
 })
 ```
 
@@ -67,7 +67,7 @@ anime.searchHonorifics('san').then(res => {
 	console.log(res)
 });
 
-anime.nameHonorifics(freezegr,  "san").then(res => {
+anime.nameHonorifics(freezegr, "san").then(res => {
 	console.log(res)
 });
 ```
