@@ -7,7 +7,7 @@
   <a href="https://github.com/freezegr/insta.js/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
   </a>
-  <a href="https://img.shields.io/static/v1?label=owner&message=freezegr&color=blue">
+  <a href="https://discord.gg/2eazDsQn">
     <img src="https://img.shields.io/static/v1?label=owner&message=freezegr&color=blue" alt="owner">
   </a>
 </p>
@@ -24,6 +24,7 @@
     - [Wallpaper-meme](#Wallpaper-meme)
 - [coming soon](#coming-soon)
   - [Seasonal Anime](#Seasonal-Anime)
+- [support](#https://discord.gg/2eazDsQn)
 ## Installation 
 
 `npm i @freezegole/anime.js --save`
