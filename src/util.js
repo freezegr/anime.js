@@ -77,9 +77,9 @@ module.exports.searchManga = function(search, maxResult = "max") {
 };
 
 const honoFunction1 = function(honori){
-	function first(txt){
-		return honorifics.filter(x=>x.hono == txt)
-	}
+  function first(txt){
+    return honorifics.filter(x=>x.hono == txt)
+  }
   function second(txt){
     const alies = honorifics.map(x=>x.aliases)
     const to = alies.map(word => word.includes(txt))
@@ -101,7 +101,7 @@ const honoFunction1 = function(honori){
       resolve(honorifics.filter(x=>x.hono == honori)[0])
     }
   } 
-	return new Promise(tpt)
+  return new Promise(tpt)
 }
 
 module.exports.nameHonorific = function(name, hono = "san"){
