@@ -25,16 +25,16 @@ module.exports.searchAnime = function(search, maxResult = "max") {
       .then(res => res.json())
       .then(json => {
         function NotIwannis(data){
-        if(maxResult > json.data.length) maxResult = json.data.length;
-        if(maxResult == "max") maxResult = json.data.length;
-        let roflis = []
-        function paoulo(info){
-          return new Anime(info) 
-        }
-        for(let i = 0; i < maxResult; i++){
-          roflis.push(paoulo(json.data[i]))
-        }
-        return roflis
+          if(maxResult > json.data.length) maxResult = json.data.length;
+          if(maxResult == "max") maxResult = json.data.length;
+          let roflis = []
+          function paoulo(info){
+            return new Anime(info) 
+          }
+          for(let i = 0; i < maxResult; i++){
+            roflis.push(paoulo(json.data[i]))
+          }
+          return roflis
       }
      resolve(NotIwannis())
     })
