@@ -1,20 +1,15 @@
 const util = require('./src/util.js');
 
-exports.Client = class {
-  constructor(){
-    this.honorifics = util.honorifics,
-    this.nsfwAll = util.nsfwAll,
-    this.sfwAll = util.sfwAll,
-    this.searchAnime = util.searchAnime,
-    this.searchManga = util.searchManga,
-    this.getAnimeList = util.getWatchList,
-    this.getMangaList = util.getMangaList,
-    this.profile = util.profile,
-    this.searchHonorific = util.honoFunction,
-    this.nameHonorific = util.nameHonorific,
-    this.meme = util.meme,
-    this.nsfw = util.nekoNsfw,
-    this.sfw = util.nekoSfw,
-    this.wallpaper = util.nekoWallpaper
-  }
-};
+exports.honorifics = util.honorifics,
+exports.nsfwAll = util.nsfwAll,
+exports.sfwAll = util.sfwAll,
+exports.searchAnime = util.searchAnime,
+exports.searchManga = util.searchManga,
+exports.getAnimeList = util.getWatchList,
+exports.getMangaList = util.getMangaList,
+exports.profile = util.profile,
+exports.searchHonorific = util.honoFunction,
+exports.nameHonorific = util.nameHonorific,
+exports.meme = util.meme,
+exports.nsfw = util.nekoNsfw,
+exports.wallpaper = util.nekoWallpaper

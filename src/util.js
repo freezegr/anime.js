@@ -1,29 +1,27 @@
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-const { Anime } = require('../src/animeSearchClass.js');
+const { Anime, Manga } = require('../src/animeSearchClass.js');
 const { version } = require('../package.json');
-const { Manga } = require('../src/manga.js');
 const { honorifics } = require('../src/db.js');
 const puppy = require('random-puppy');
 const { nsfw, sfw, nsfwAZ, sfwAZ} = require('./snfw.js');
 const nekoURL = 'https://nekos.life/api/v2';
 const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (https://github.com/freezegr/anime.js)`
-const head = {
-	userAgent : userAgentTxt,
-	options : {
-	  headers: {
-		  'User-Agent': userAgentTxt,
-      Accept: 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json'
-    }
-  }
-}
 
 module.exports.searchAnime = function(search, maxResult = "max") {
   return new Promise((resolve, reject) => {
   	let page = 0;
     const searchTerm = encodeURIComponent(search);
-    return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
+    return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, {
+      userAgent : userAgentTxt,
+	  options : {
+		  headers: {
+			  'User-Agent': userAgentTxt,
+			  Accept: 'application/vnd.api+json',
+			  'Content-Type': 'application/vnd.api+json'
+		  }
+	  }
+	})
     .then(res => res.json())
     .then(json => {
       function NotIwannis(data){
@@ -48,7 +46,16 @@ module.exports.searchManga = function(search, maxResult = "max") {
 		return new Promise((resolve, reject) => {
 			const searchTerm = encodeURIComponent(search);
 			let page = 0;
-			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, head)
+			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, {
+      userAgent : userAgentTxt,
+	  options : {
+		  headers: {
+			  'User-Agent': userAgentTxt,
+			  Accept: 'application/vnd.api+json',
+			  'Content-Type': 'application/vnd.api+json'
+		  }
+	  }
+	})
 				.then(res => res.json())
 			  .then(json => {
 			  	function lel(data){
@@ -446,8 +453,14 @@ module.exports.profile = ((name, callback) => {
 	
 });
 
-module.exports.nsfwAll = nsfwAZ;
-module.exports.sfwAll = sfwAZ;
-module.exports.honorifics = honorifics;
+module.exports.nsfwAll = function(){
+  return nsfwAZ	
+};
+module.exports.sfwAll = function(){
+  return sfwAZ	
+}; 
+module.exports.honorifics = function (){
+  return honorifics	
+};
 module.exports.honoFunction = honoFunction1;
 

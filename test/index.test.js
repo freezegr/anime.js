@@ -1,4 +1,2 @@
-const animeJs = require('../index.js')
-const anime = new animeJs.Client()
-
+const anime = require('../index.js');
 console.log(anime)
