@@ -88,7 +88,7 @@ anime.nsfw('anal').then(res=> {
 anime.sfw('kiss').then(res=> {
 	console.log(res)
 });
-//all nsfw and all sfw => console.log(anime.nfswAll) / console.log(anime.sfwAll)
+//all nsfw and all sfw => console.log(anime.nfswAll()) / console.log(anime.sfwAll())
 ```
 
 ## Wallpaper Meme 
