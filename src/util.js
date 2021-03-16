@@ -21,9 +21,7 @@ module.exports.searchAnime = function(search, maxResult = "max") {
             'Content-Type': 'application/vnd.api+json'
           }
         }
-      })
-      .then(res => res.json())
-      .then(json => {
+      }).then(res => res.json()).then(json => {
         function NotIwannis(data){
           if(maxResult > json.data.length) maxResult = json.data.length;
           if(maxResult == "max") maxResult = json.data.length;
@@ -37,8 +35,7 @@ module.exports.searchAnime = function(search, maxResult = "max") {
           return roflis
       }
      resolve(NotIwannis())
-    })
-    .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
+    }).catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
   })
 };
 
