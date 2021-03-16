@@ -52,9 +52,7 @@ module.exports.searchManga = function(search, maxResult = "max") {
           'Content-Type': 'application/vnd.api+json'
         }
       }
-    })
-    .then(res => res.json())
-    .then(json => {
+    }).then(res => res.json()).then(json => {
       function lel(data){
         if(maxResult > json.data.length) maxResult = json.data.length;
         if(maxResult == "max") maxResult = json.data.length;
@@ -68,8 +66,7 @@ module.exports.searchManga = function(search, maxResult = "max") {
         return flipblouk
       }
       resolve(lel())
-    })
-    .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
+    }).catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
   });
 };
 
