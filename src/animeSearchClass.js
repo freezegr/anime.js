@@ -41,7 +41,7 @@ class Manga {
       enJp: data.attributes.titles.en_jp,
       canonicalTitle: data.attributes.canonical_title,
       abbreviatedTitles: data.attributes.abbreviatedTitles
-		};
+    };
     this.averageRating = data.attributes.averageRating;
     this.ratingFrequencies = data.attributes.ratingFrequencies;
     this.userCount = data.attributes.userCount;
