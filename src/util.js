@@ -10,32 +10,32 @@ const userAgentTxt = `kitsu.js, a npm module for the kitsu.io API. v${version} (
 
 module.exports.searchAnime = function(search, maxResult = "max") {
   return new Promise((resolve, reject) => {
-  	let page = 0;
+    let page = 0;
     const searchTerm = encodeURIComponent(search);
     return fetch(`https://kitsu.io/api/edge/anime?filter[text]="${searchTerm}"&page[offset]=${page}`, {
       userAgent : userAgentTxt,
-	  options : {
-		  headers: {
-			  'User-Agent': userAgentTxt,
-			  Accept: 'application/vnd.api+json',
-			  'Content-Type': 'application/vnd.api+json'
-		  }
-	  }
-	})
-    .then(res => res.json())
-    .then(json => {
-      function NotIwannis(data){
-			  if(maxResult > json.data.length) maxResult = json.data.length;
-			  if(maxResult == "max") maxResult = json.data.length;
-			  let roflis = []
-			    function paoulo(info){
-			  	 return new Anime(info) 
-			    }
-			  for(let i = 0; i < maxResult; i++){
-			   roflis.push(paoulo(json.data[i]))
-			  }
-			  return roflis
-			}
+        options : {
+          headers: {
+            'User-Agent': userAgentTxt,
+            Accept: 'application/vnd.api+json',
+            'Content-Type': 'application/vnd.api+json'
+          }
+        }
+      })
+      .then(res => res.json())
+      .then(json => {
+        function NotIwannis(data){
+        if(maxResult > json.data.length) maxResult = json.data.length;
+        if(maxResult == "max") maxResult = json.data.length;
+        let roflis = []
+        function paoulo(info){
+          return new Anime(info) 
+        }
+        for(let i = 0; i < maxResult; i++){
+          roflis.push(paoulo(json.data[i]))
+        }
+        return roflis
+      }
      resolve(NotIwannis())
     })
     .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
