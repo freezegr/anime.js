@@ -43,36 +43,36 @@ module.exports.searchAnime = function(search, maxResult = "max") {
 };
 
 module.exports.searchManga = function(search, maxResult = "max") {
-		return new Promise((resolve, reject) => {
-			const searchTerm = encodeURIComponent(search);
-			let page = 0;
-			return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, {
+  return new Promise((resolve, reject) => {
+    const searchTerm = encodeURIComponent(search);
+    let page = 0;
+    return fetch(`https://kitsu.io/api/edge/manga?filter[text]="${searchTerm}"&page[offset]=${page}`, {
       userAgent : userAgentTxt,
-	  options : {
-		  headers: {
-			  'User-Agent': userAgentTxt,
-			  Accept: 'application/vnd.api+json',
-			  'Content-Type': 'application/vnd.api+json'
-		  }
-	  }
-	})
-				.then(res => res.json())
-			  .then(json => {
-			  	function lel(data){
-			  	  if(maxResult > json.data.length) maxResult = json.data.length;
-			  	  if(maxResult == "max") maxResult = json.data.length;
-			  	  let flipblouk = []
-			  	  function gourgourizeiToKefaliMou(info){
-			  	   return new Manga(info) 
-			  	  }
-			  	  for(let i = 0; i < maxResult; i++){
-			  	  	flipblouk.push(gourgourizeiToKefaliMou(json.data[i]))
-			  	  }
-			  	  return flipblouk
-			  	}
-			  	resolve(lel())
-			  })
-				.catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
+      options : {
+        headers: {
+          'User-Agent': userAgentTxt,
+          Accept: 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json'
+        }
+      }
+    })
+    .then(res => res.json())
+    .then(json => {
+      function lel(data){
+        if(maxResult > json.data.length) maxResult = json.data.length;
+        if(maxResult == "max") maxResult = json.data.length;
+        let flipblouk = []
+        function gourgourizeiToKefaliMou(info){
+          return new Manga(info) 
+        }
+        for(let i = 0; i < maxResult; i++){
+          flipblouk.push(gourgourizeiToKefaliMou(json.data[i]))
+        }
+        return flipblouk
+      }
+      resolve(lel())
+    })
+    .catch(err => reject(new Error(`Couldn't fetch the api: ${err}`)));
   });
 };
 
