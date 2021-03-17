@@ -162,80 +162,76 @@ module.exports.nekoSfw = function(category){
 
 
 module.exports.nekoWallpaper = function(){
-	function promis(resolve, reject){
+  function promis(resolve, reject){
     try{
-		  fetch(nekoURL+sfw[0].wallpaper)
-		    .then(result=>result.json())
-		    .then(res=>resolve(res))
-		}catch(err){
-			reject(err)
-		}
-	}
-	return new Promise(promis)
+      fetch(nekoURL+sfw[0].wallpaper).then(result=>result.json()).then(res=>resolve(res))
+    }catch(err){
+      reject(err)
+    }
+  }
+  return new Promise(promis)
 }
 const getAnimeList = function(name, status = 'all'){
   function exacute(resolve, reject){
-    fetch(`http://myanimelist.net/animelist/${name}/load.json`)
-      .then(ress => ress.json())
-      .then(res => {
-        let animeStatus = {
-          profileName: name,
-          watching: [],
-          completed: [],
-          dropped: [],
-          planToWatch: []
+    fetch(`http://myanimelist.net/animelist/${name}/load.json`).then(ress => ress.json()).then(res => {
+      let animeStatus = {
+        profileName: name,
+        watching: [],
+        completed: [],
+        dropped: [],
+        planToWatch: []
+      }
+      for(let i = 0; i < res.length; i++){
+        switch(res[i].status) {
+          case 1:
+            animeStatus.watching.push(res[i].anime_title)
+          break;
+          case 2:
+            animeStatus.completed.push(res[i].anime_title)
+          break;
+          case 4:  
+            animeStatus.dropped.push(res[i].anime_title)
+          break;
+          case 6:
+            animeStatus.planToWatch.push(res[i].anime_title)
+          break;
         }
-        for(let i = 0; i < res.length; i++){
-        	switch(res[i].status) {
-        		case 1:
-        		  animeStatus.watching.push(res[i].anime_title)
-        		break;
-        		case 2:
-        		  animeStatus.completed.push(res[i].anime_title)
-        		break;
-        		case 4:
-        		  animeStatus.dropped.push(res[i].anime_title)
-        		break;
-        		case 6:
-        		  animeStatus.planToWatch.push(res[i].anime_title)
-        		break;
-        	}
-        }
+      }
       switch(status){
-      	case 'all':
-      	  resolve(animeStatus)
-      	break;
-      	case 'watching':
-      	  resolve({
-      	  	profileName: name,
-      	  	watching: animeStatus.watching
-      	  })
-      	break;
-      	case 'completed':
-      	  resolve({
-      	    profileName: name,
-      	    completed: animeStatus.completed
-      	   })
-      	break;
-      	case 'dropped':
-      	resolve({
-      	  	profileName: name,
-      	  	dropped: animeStatus.dropped
-      	  })
-      	break;
-      	case 'planToWatch':
-      	  resolve({
-      	  	profileName: name,
-      	  	planTowatch: animeStatus.planToWatch
-      	  })
-      	break;
-      	default:
-      	  reject(`[anime.js]: I don't know this status "${status}"`)
-      	break;
+        case 'all':
+          resolve(animeStatus)
+        break;
+        case 'watching':
+          resolve({
+          profileName: name,
+          watching: animeStatus.watching
+          })
+        break;
+        case 'completed':
+          resolve({
+          profileName: name,
+          completed: animeStatus.completed
+          })
+        break;
+        case 'dropped':
+          resolve({
+          profileName: name,
+          dropped: animeStatus.dropped
+          })
+        break;
+        case 'planToWatch':
+          resolve({
+          profileName: name,
+          planTowatch: animeStatus.planToWatch
+          })
+        break;
+        default:
+        reject(`[anime.js]: I don't know this status "${status}"`)
+        break;
       } 
     })
-	}
-	return new Promise(exacute)
+  }
+  return new Promise(exacute)
 }
 
 module.exports.getWatchList = getAnimeList
