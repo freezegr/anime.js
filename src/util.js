@@ -110,7 +110,7 @@ module.exports.meme = function(){
     "MemesOfAnime",
     "animememes",
     "AnimeFunny"
- ]  
+  ]  
   var subreddit = memesPar[Math.floor(Math.random() * memesPar.length)];
   
   function prom(resolve, reject){
@@ -127,40 +127,36 @@ module.exports.meme = function(){
 
 
 module.exports.nekoNsfw = function(category){
-	if(!category) return new Error('No category')
-	function exacute(value){
-		return fetch(nekoURL+value)
-		  .then(result=> result.json())
-		  .then(res=> res)
-	}
-	async function promis(resolve, reject){
+  if(!category) return new Error('No category')
+  function exacute(value){
+    return fetch(nekoURL+value).then(result=> result.json()).then(res=> res)
+  }  
+  async function promis(resolve, reject){
     for(let i = 0; i < Object.keys(nsfw[0]).length; i++){
       if(Object.keys(nsfw[0])[i] == category){
-      	resolve(await exacute(Object.values(nsfw[0])[i]))
+        resolve(await exacute(Object.values(nsfw[0])[i]))
       }else if(i == Object.keys(nsfw[0]).length - 1){
-      	reject(`I can't find ${category}`)
+        reject(`I can't find ${category}`)
       } 
     }
-	}
+  }
   return new Promise(promis)
 }
 
 module.exports.nekoSfw = function(category){
-	if(!category) return new Error('No category')
-	function exacute(value){
-		return fetch(nekoURL+value)
-		  .then(result=> result.json())
-		  .then(res=> res)
-	}
-	async function promis(resolve, reject){
+  if(!category) return new Error('No category')
+  function exacute(value){
+    return fetch(nekoURL+value).then(result=> result.json()).then(res=> res)
+  }
+  async function promis(resolve, reject){
     for(let i = 0; i < Object.keys(sfw[0]).length; i++){
       if(Object.keys(sfw[0])[i] == category){
-      	resolve(await exacute(Object.values(sfw[0])[i]))
+        resolve(await exacute(Object.values(sfw[0])[i]))
       }else if(i == Object.keys(sfw[0]).length - 1){
-      	reject(`I can't find ${category}`)
-      } 
+        reject(`I can't find ${category}`)
+      }
     }
-	}
+  }
   return new Promise(promis)
 }
 
