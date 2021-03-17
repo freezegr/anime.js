@@ -21,9 +21,10 @@
     - [Honorifics](#Honorifics)
     - [NSFW](#NSFW)
     - [SFW](#SFW)
-    - [Wallpaper-meme](#Wallpaper-meme)
+    - [Wallpaper](#Wallpaper)
 - [Coming soon](#Seasonal-Anime)
   - [Seasonal Anime](#Seasonal-Anime)
+  - [Meme](#Meme)
 - [Support](https://discord.gg/pQdhaUBFcc)
 
 ## Installation 
@@ -91,25 +92,27 @@ anime.sfw('kiss').then(res=> {
 //all nsfw and all sfw => console.log(anime.nfswAll()) / console.log(anime.sfwAll())
 ```
 
-## Wallpaper Meme 
+## Wallpaper 
 
-```ja
-anime.meme().then(res => {
-	console.log(res)
-});
-
+```js
 anime.wallpaper.thne(res=>{
 	console.log(res)
 });
-
 ```
 
 
 ## Seasonal Anime
 
 ```js
-  //comming soon
-  anime.seasonal().then((res) => {
-    console.log(res)
-  });
+//comming soon
+anime.seasonal().then((res) => {
+  console.log(res)
+});
+```
+## Meme
+```js
+//comming soon
+anime.meme().then(res => {
+	console.log(res)
+});
 ```
