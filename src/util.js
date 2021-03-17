@@ -238,67 +238,65 @@ module.exports.getWatchList = getAnimeList
 
 const getMangaList = function (name, status = 'all'){
   function exacute(resolve, reject){
-    fetch(`http://myanimelist.net/mangalist/${name}/load.json`)
-      .then(ress => ress.json())
-      .then(res => {
-        let mangaStatus = {
-          profileName: name,
-          reading: [],
-          completed: [],
-          dropped: [],
-          planToRead: []
-        }
-        for(let i = 0; i < res.length; i++){
-        	switch(res[i].status) {
-        		case 1:
-        		  mangaStatus.reading.push(res[i].manga_title)
-        		break;
-        		case 2:
-        		  mangaStatus.completed.push(res[i].manga_title)
-        		break;
-        		case 4:
-        		  mangaStatus.dropped.push(res[i].manga_title)
-        		break;
-        		case 6:
-        		  mangaStatus.planToRead.push(res[i].manga_title)
-        		break;
-        	}
-        }
+    fetch(`http://myanimelist.net/mangalist/${name}/load.json`).then(ress => ress.json()).then(res => {
+      let mangaStatus = {
+        profileName: name,
+        reading: [],
+        completed: [],
+        dropped: [],
+        planToRead: []
+      }
+      for(let i = 0; i < res.length; i++){
+        switch(res[i].status) {
+          case 1:
+            mangaStatus.reading.push(res[i].manga_title)
+          break;
+          case 2:
+            mangaStatus.completed.push(res[i].manga_title)
+          break;
+          case 4:
+            mangaStatus.dropped.push(res[i].manga_title)
+          break;
+          case 6:
+            mangaStatus.planToRead.push(res[i].manga_title)
+          break;
+         }
+      }
       switch(status){
-      	case 'all':
-      	  resolve(mangaStatus)
-      	break;
-      	case 'watching':
-      	  resolve({
-      	  	profileName: name,
-      	  	watching: mangaStatus.watching
-      	  })
-      	break;
-      	case 'completed':
-      	  resolve({
-      	    profileName: name,
-      	    completed: mangaStatus.completed
-      	   })
-      	break;
-      	case 'dropped':
-      	resolve({
-      	  	profileName: name,
-      	  	dropped: mangaStatus.dropped
-      	  })
-      	break;
-      	case 'planToWatch':
-      	  resolve({
-      	  	profileName: name,
-      	  	planToRead: mangaStatus.planToRead
-      	  })
-      	break;
-      	default:
-      	  resolve({err: 1})
-      	break;
+        case 'all':
+          resolve(mangaStatus)
+        break;
+        case 'watching':
+          resolve({
+          profileName: name,
+          watching: mangaStatus.watching
+          })
+        break;
+        case 'completed':
+          resolve({
+          profileName: name,
+          completed: mangaStatus.completed
+          })
+        break;
+        case 'dropped':
+          resolve({
+          profileName: name,
+          dropped: mangaStatus.dropped
+          })
+        break;
+        case 'planToWatch':
+          resolve({
+          profileName: name,
+          planToRead: mangaStatus.planToRead
+          })
+        break;
+        default:
+          resolve({err: 1})
+        break;
       } 
     })
-	}
-	return new Promise(exacute)
+  }
+  return new Promise(exacute)
 }
 
 module.exports.getMangaList = getMangaList
