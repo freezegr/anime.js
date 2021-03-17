@@ -99,8 +99,8 @@ anime.wallpaper.thne(res=>{
 	console.log(res)
 });
 ```
-<h1 align="center">Welcome to anime.js 👋</h1>
-
+<h1 align="center">Comming soon</h1>
+---
 ## Seasonal Anime
 
 ```js
