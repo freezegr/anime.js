@@ -34,8 +34,7 @@
 ## Anime-Manga Search
 
 ```js
-const animeJs = require('@freezegold/anime.js');
-const anime = new animeJs.Client()
+const anime = require('@freezegold/anime.js');
 
 anime.searchAnime('attack on titan', 1).then(res => { //1 = maxResult
 	console.log(res);
