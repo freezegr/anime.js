@@ -10,7 +10,8 @@ exports.getMangaList = util.getMangaList,
 exports.profile = util.profile,
 exports.searchHonorific = util.honoFunction,
 exports.nameHonorific = util.nameHonorific,
-exports.meme = util.meme,
 exports.nsfw = util.nekoNsfw,
 exports.sfw = util.nekoSfw,
 exports.wallpaper = util.nekoWallpaper
+
+//exports.meme = util.meme (comming soon)
