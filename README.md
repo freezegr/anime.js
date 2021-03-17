@@ -100,7 +100,9 @@ anime.wallpaper.thne(res=>{
 });
 ```
 <h1 align="center">Comming soon</h1>
+
 ---
+
 ## Seasonal Anime
 
 ```js
