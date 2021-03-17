@@ -12,4 +12,5 @@ exports.searchHonorific = util.honoFunction,
 exports.nameHonorific = util.nameHonorific,
 exports.meme = util.meme,
 exports.nsfw = util.nekoNsfw,
+exports.sfw = util.nekoSfw,
 exports.wallpaper = util.nekoWallpaper
